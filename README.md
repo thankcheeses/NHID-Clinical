@@ -1,4 +1,7 @@
 # NHID-Clinical
+
+A proposed non-human identity disclosure standard for AI voice agents used in healthcare administrative workflows, including insurance verification, prior authorization, and benefits inquiries.
+
 ## Author
 
 Brianna Baynard  
