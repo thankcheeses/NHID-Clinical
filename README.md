@@ -1,4 +1,8 @@
 # NHID-Clinical
+## Author
+
+Brianna Baynard  
+Independent AI Governance & Risk Researcher
 
 **Non-Human Identity Disclosure Standard for Healthcare Voice Workflows**
 
