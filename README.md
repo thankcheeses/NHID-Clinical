@@ -7,6 +7,7 @@ A proposed non-human identity disclosure standard for AI voice agents used in he
 Brianna Baynard  
 Independent AI Governance & Risk Researcher
 
+
 **Non-Human Identity Disclosure Standard for Healthcare Voice Workflows**
 
 ![Version](https://img.shields.io/badge/version-1.0_draft-orange)
