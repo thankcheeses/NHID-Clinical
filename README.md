@@ -1,79 +1,52 @@
-# NHID-Clinical
-
-A proposed non-human identity disclosure standard for AI voice agents used in healthcare administrative workflows, including insurance verification, prior authorization, and benefits inquiries.
-
-## Author
-
-Brianna Baynard  
-Independent AI Governance & Risk Researcher
-
+# NHID-Clinical v1.1
 
 **Non-Human Identity Disclosure Standard for Healthcare Voice Workflows**
 
-![Version](https://img.shields.io/badge/version-1.0_draft-orange)
-![Domain](https://img.shields.io/badge/domain-AI_Governance_%7C_Operational_Risk-0052CC)
-![Status](https://img.shields.io/badge/status-open_for_review-green)
+[![Version](https://img.shields.io/badge/version-1.1_candidate-blue)](https://github.com/thankcheeses/NHID-Clinical)
+[![Domain](https://img.shields.io/badge/domain-AI_Governance_%7C_Operational_Risk-0052CC)](https://github.com/thankcheeses/NHID-Clinical)
+[![Status](https://img.shields.io/badge/status-open_for_comment-green)](https://github.com/thankcheeses/NHID-Clinical)
 
 ---
 
 ## Abstract
 
-NHID-Clinical defines a minimum control baseline for non-human identity disclosure in healthcare voice interactions.
+**NHID-Clinical** defines a minimum control baseline for non-human identity disclosure in B2B healthcare voice interactions.
 
-The standard addresses a documented gap between existing consumer-protection laws, healthcare privacy regulations, and real-world payer–provider administrative workflows, where AI voice agents are increasingly used without clear, proactive disclosure.
+The standard addresses a documented gap between existing consumer-protection laws, healthcare privacy regulations, and real-world payer–provider administrative workflows. It specifically targets **"Impersonation Latency"**—the operational waste and security risk caused when a human provider cannot immediately distinguish an AI agent from a human counterpart.
 
-**NHID-Clinical is not an ethics statement.** It is an operational standard designed to reduce administrative waste, prevent impersonation risk, and restore trust in regulated healthcare communications.
-
----
-
-## Problem Statement: Impersonation Latency
-
-In current healthcare operations, AI voice agents are commonly deployed for eligibility checks, claim status inquiries, and administrative routing.
-
-In many implementations:
-
-- AI agents do not disclose non-human identity unless explicitly challenged
-- Disclosure is reactive rather than proactive
-- Providers spend billable time determining whether they are interacting with a human
-- Existing regulations focus on data security, marketing abuse, or coverage decisions—not identity transparency in administrative calls
-
-This creates **impersonation latency**: time lost due to uncertainty about who (or what) is on the line.
+**Note:** This standard is scoped strictly for **B2B Administrative Workflows** (Provider-to-Payer, Business Associate-to-Payer). It does not currently cover direct-to-consumer or patient-facing clinical triage.
 
 ---
 
-## Regulatory Context: Why This Exists
+## Problem Statement
 
-NHID-Clinical does not conflict with existing law. It addresses what current frameworks leave unspecified:
+In current healthcare operations, AI voice agents are commonly deployed for eligibility checks, claim status inquiries, and administrative routing. In many implementations:
 
-### California SB 1001 (B.O.T. Act)
-- Applies to online interactions intended to influence a sale or vote
-- Does not govern inbound B2B healthcare voice workflows
+* AI agents do not disclose non-human identity unless explicitly challenged.
+* Disclosure is reactive rather than proactive.
+* Providers spend billable time determining whether they are interacting with a human.
 
-### HIPAA / CMS Guidance
-- Focuses on PHI protection and coverage decisions
-- Does not require AI agents to identify themselves during administrative calls
-
-### TCPA / FCC Robocall Rules
-- Govern outbound automated calls and consent
-- Do not address "synthetic receivers" in inbound provider-initiated calls
-
-**NHID-Clinical operates at the operational layer these regimes do not define.**
+This creates **Impersonation Latency**: time lost due to uncertainty about the nature of the counterparty.
 
 ---
 
-## Scope
+## Positioning
 
-This standard applies to:
+NHID-Clinical is a voluntary governance standard that operationalizes transparency requirements.
 
-- AI voice agents, IVR systems, or conversational agents
-- Used in healthcare administrative workflows
-- Involving providers, payers, clearinghouses, or delegated vendors
-- Where the interaction may involve claims, eligibility, benefits, or authorization data
+* **Beyond Minimums:** It aligns with the *intent* of HIPAA (access control), NIST (measurability), and the California B.O.T. Act (disclosure timing), while establishing strict operational boundaries that may exceed baseline legal requirements.
+* **Operational Focus:** Unlike broad ethical frameworks, it provides binary, testable logic gates (e.g., "Pre-Data Exchange") for engineering and QA teams.
+* **Risk Reduction:** Designed to reduce "Impersonation Latency"—a specific operational risk not fully addressed by general privacy laws.
 
-**Out of scope:**
-- Consumer marketing calls
-- Political or sales bots
-- Clinical decision-making systems
+---
+
+## Regulatory Context & Compatibility
+
+NHID-Clinical operates at the **operational layer**, complementing existing legal frameworks without conflict:
+
+* **HIPAA:** NHID-Clinical focuses on the *identity* of the actor, ensuring that the "Minimum Necessary" standard is applied to the correct entity type (human vs. machine).
+* **TCPA / FCC:** While these govern outbound consent, NHID-Clinical manages the *content* of the inbound handshake to prevent deceptive practices in exempt B2B calls.
+* **California B.O.T. Act:** Extends the spirit of disclosure to private healthcare administrative channels not explicitly covered by public-facing consumer laws.
 
 ---
 
@@ -81,83 +54,96 @@ This standard applies to:
 
 ### 1. Proactive Identity Assertion (PIA)
 
-All non-human voice agents must disclose their non-human identity within the first **3 seconds** of interaction and before requesting or receiving operational information.
+**The Rule:**
+All non-human voice agents must proactively disclose their non-human identity **during the initial greeting** and **prior to the solicitation or intake of any operational data** (e.g., NPI, Member ID, Claim Number).
 
-**Compliant:**
-> "Hello, I am an automated virtual assistant for claims support."
+**Timing & Latency:**
+Disclosure must occur **before any request for operational data exchange**. This "Pre-Data Exchange" requirement accounts for VoIP/SIP latency and variable greeting lengths while maintaining a clear, auditable boundary.
 
-**Non-Compliant:**
-> "Hello, this is Sarah calling about a claim."
-> (Disclosure only occurs if asked)
+**Compliant Example:**
+> "Hello, I am an automated assistant for [Payer Name] Claims. I can help you with status and eligibility. To begin, please say the NPI."
 
----
-
-### 2. Prohibition of Human-Masking Techniques ("Turing Boundary")
-
-During authentication and administrative exchange, agents must not employ techniques intended to simulate human presence, including:
-
-- Simulated typing or thinking delays
-- Synthetic breathing or emotional affect
-- Urgency or frustration designed to bypass gatekeepers
-
-**Identity clarity is a security control, not a UX preference.**
+**Non-Compliant Example:**
+> "Hello, this is Sarah. Can I get the NPI?"
+> *(Violation: Uses a human name without qualification; requests data before disclosure.)*
 
 ---
 
-### 3. Escalation Handshake
+### 2. Prohibition of Deceptive Artifacts ("The Turing Boundary")
 
-When a human stakeholder is requested:
+**The Rule:**
+Agents must not employ synthetic audio artifacts that serve no communicative function other than to imply biological presence or mask processing latency.
 
-1. The agent must acknowledge immediately
-2. The agent must disclose functional limitations
-3. A reference or interaction ID must be provided before transfer or termination
+**Prohibited "Masking" Techniques:**
+* **Simulated Physical Actions:** Sound effects of keyboard typing, mouse clicking, or paper shuffling.
+* **Simulated Biological Functions:** Synthetic breathing sounds, clearing of the throat, or coughing.
+* **Deceptive Latency Masking:** Using scripted "thinking" sounds (e.g., "Umm...", "Let me see...") implies a human cognitive process. Agents should instead use functional status updates (e.g., "One moment while I search that record...").
+
+*Note: Natural prosody, inflection, and conversational pacing required for clear communication are **permitted** and encouraged.*
+
+---
+
+### 3. Escalation & Safe Failover
+
+**The Rule:**
+When a human stakeholder explicitly requests a transfer or indicates the agent is failing to understand:
+
+1.  **Acknowledgement:** The agent must immediately acknowledge the request (e.g., "I understand you need to speak to a specialist").
+2.  **Context Preservation:** The agent should generate a reference number or interaction ID to prevent data reentry.
+3.  **Safe Failover:**
+    * *If human staff is available:* Transfer immediately.
+    * *If human staff is unavailable (e.g., after hours):* The agent must explicitly state hours of operation and offer a voicemail or callback option rather than looping or disconnecting.
 
 ---
 
 ## Audit & Evidence Requirements
 
-Implementations should produce auditable artifacts including:
+To ensure compliance without imposing undue technical burdens, implementations must maintain **Interaction Logs**.
 
-- Timestamped disclosure confirmation
-- Agent identity and version
-- Escalation events
-- Call disposition
+**Minimum Required Evidence (Tier 1):**
+* **Transaction Log:** A text-based log entry timestamping the "Identity Assertion" event relative to the "Call Connected" event.
+* **Script Versioning:** Documentation of the active call script proving the disclosure verbiage was present in the production flow.
 
-These artifacts support internal audit, vendor oversight, and incident review.
+**Recommended Evidence (Tier 2):**
+* **Audio Artifact:** A recording of the first 30 seconds of the interaction (subject to organizational data retention policies).
 
 ---
 
 ## Metrics
 
-Suggested indicators:
+Suggested indicators for measuring success:
 
-- **Impersonation Latency (IL):** Seconds elapsed before caller confirms non-human identity
-- **Disclosure Failure Rate (DFR):** % of calls where disclosure was not delivered within the first 3 seconds
-- **Escalation Completion Rate (ECR):** % of human requests successfully transferred without loops
-- **Administrative Call Time Saved:** Minutes recovered through immediate clarity on agent identity
+* **Disclosure Failure Rate (DFR):** % of calls where data exchange was attempted *before* identity disclosure.
+* **Escalation Loop Count:** Frequency of callers repeating "Agent" or "Representative" more than twice (indicating failed escalation logic).
+* **Administrative Velocity:** Reduction in total call handle time (AHT) due to the elimination of "Are you a robot?" verification loops.
 
 ---
 
 ## NIST AI RMF Alignment
 
-NHID-Clinical aligns with the NIST AI Risk Management Framework (AI RMF 1.0) and operationalizes transparency and human-AI interaction controls in regulated healthcare workflows.
+NHID-Clinical operationalizes the **NIST AI Risk Management Framework (AI RMF 1.0)**:
 
 | AI RMF Function | Category | NHID-Clinical Alignment |
-|---|---|---|
-| **GOVERN** | GOV 1.5 – Risk Management Process | Defines impersonation risk as a measurable operational risk requiring governance and ownership. |
-| **MAP** | MAP 3.4 – Human-AI Interaction | Identifies the boundary where synthetic voice output mimics human actors ("impersonation latency"). |
-| **MEASURE** | MEAS 2.6 – Transparency Measurement | Introduces quantifiable metrics (IL, DFR, ECR) to evaluate disclosure effectiveness. |
+| :--- | :--- | :--- |
+| **GOVERN** | GOV 1.5 – Risk Management | Defines "impersonation" as a specific operational risk to be governed. |
+| **MAP** | MAP 3.4 – Human-AI Interaction | Establishes the boundary where synthetic voice output must not deceive human actors. |
+| **MEASURE** | MEAS 2.6 – Transparency | Introduces quantifiable metrics (DFR) to evaluate disclosure effectiveness. |
 | **MANAGE** | MAN 4.1 – Post-Deployment Monitoring | Requires audit artifacts and disclosure logs for ongoing oversight of agent identity behavior. |
 
 ---
 
-## Positioning
+## Known Gaps & Future Scope
 
-NHID-Clinical is:
+This v1.1 candidate does not currently address:
 
-✓ A minimum control baseline, not a legal mandate  
-✓ Compatible with HIPAA, CMS guidance, and state law  
-✓ Designed for provider efficiency and operational trust  
+* **Patient-facing workflows:** Direct-to-consumer or clinical triage interactions.
+* **Outbound calls:** Payer-initiated or proactive agent calls.
+* **International compliance:** GDPR or non-U.S. regulatory contexts.
+* **Accessibility:** Multilingual support, deaf/hard-of-hearing accommodations, or cultural communication variations.
+* **Multi-entity integrations:** Scenarios where AI handles data across multiple payers or vendors dynamically.
+* **Enforcement mechanisms:** Certification, audit standards, or adoption incentives.
+
+These are candidates for v1.2 and beyond, contingent on community feedback.
 
 ---
 
@@ -165,10 +151,30 @@ NHID-Clinical is:
 
 This work is licensed under the **Creative Commons Attribution 4.0 International License (CC-BY 4.0)**.
 
-You are free to share and adapt this standard for any purpose, provided appropriate credit is given to **Brianna Baynard** and **NHID-Clinical**.
+**Author:** Brianna Baynard  
+**Repository:** [github.com/thankcheeses/NHID-Clinical](https://github.com/thankcheeses/NHID-Clinical)
 
 ---
 
-## Next Steps
+## Feedback & Next Steps
 
-For adoption guidance or technical implementation questions, please open an issue or discussion in this repository.
+This is a **v1.1 Candidate** released for public comment. We invite:
+
+* **Technical feedback** on the Pre-Data Exchange requirement and audit logging feasibility.
+* **Compliance input** from HIPAA officers, healthcare IT architects, and payer/provider operations teams.
+* **Implementation experience** from organizations piloting similar controls.
+
+Please open an issue or discussion in this repository to contribute.
+
+---
+
+## Changelog
+
+**v1.1 (Candidate)**
+* Shifted timing requirement from "3-second window" to "Pre-Data Exchange gate" for improved auditability and latency-agnostic compliance.
+* Added "Known Gaps & Future Scope" section for transparency about coverage limitations.
+* Refined positioning language to emphasize governance best practice over regulatory equivalence.
+* Clarified distinction between permitted natural prosody and prohibited deceptive artifacts.
+
+**v1.0**
+* Initial draft with temporal disclosure requirements and NIST/HIPAA alignment mapping.
