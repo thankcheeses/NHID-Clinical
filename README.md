@@ -160,7 +160,7 @@ Based on community feedback, the following gaps have been identified for v1.2:
 
 **Recommended Release Schedule:** Q2 2026 (after 30–60 days of feedback collection on v1.1)
 
-**Track Progress:** [View v1.2 Issues](https://github.com/thankcheeses/NHID-Clinical/issues?q=label%3Av1.2)
+**Track Progress:** [View v1.2 Issues](https://github.com/thankcheeses/NHID-Clinical/issues)
 
 
 ## License
