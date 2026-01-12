@@ -146,6 +146,22 @@ This v1.1 candidate does not currently address:
 These are candidates for v1.2 and beyond, contingent on community feedback.
 
 ---
+## v1.2 Roadmap
+
+Based on community feedback, the following gaps have been identified for v1.2:
+
+| Issue | Category | Priority | Impact |
+|---|---|---|---|
+| Bot-to-Bot Standoff | Architecture | High | Blocks B2B automation scaling |
+| Technical Signaling | Optimization | Medium | Improves efficiency, reduces latency |
+| Interrupt/Barge-In | Operational | High | Common failure mode in practice |
+| Context Preservation | Operational | Medium | Affects escalation viability |
+| Failover Liability | Compliance | High | Legal/claims risk if unaddressed |
+
+**Recommended Release Schedule:** Q2 2026 (after 30–60 days of feedback collection on v1.1)
+
+**Track Progress:** [View v1.2 Issues](https://github.com/thankcheeses/NHID-Clinical/issues?q=label%3Av1.2)
+
 
 ## License
 
