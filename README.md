@@ -1,3 +1,8 @@
+> [!IMPORTANT]
+> **🚧 v1.2 Drafting in Progress**
+> We are currently resolving architectural gaps identified in v1.1, including SIP Header Identity, Failover Logging, and Bot-to-Bot Deadlocks.
+> [**View the v1.2 Working Draft**](v1.2-draft.md) to see the proposed technical specifications.
+
 # NHID-Clinical v1.1
 
 **Non-Human Identity Disclosure Standard for Healthcare Voice Workflows**
