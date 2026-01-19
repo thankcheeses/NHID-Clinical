@@ -23,6 +23,13 @@ The standard addresses a documented gap between existing consumer-protection law
 
 ---
 
+## 📰 In the Media
+**The Next Gen Tech Insider** | January 12, 2026  
+[**"NHID-Clinical v1.1 Addresses AI Agent Challenges in Healthcare Payer Interactions"**](https://thenextgentechinsider.com/pulse/nhid-clinical-v11-addresses-ai-agent-challenges-in-healthcare-payer-interactions)  
+> "A new open-source governance standard... aims to resolve operational and compliance challenges in AI agent interactions... tackling risks of unauthorized access to patient data."
+
+---
+
 ## Problem Statement
 
 In current healthcare operations, AI voice agents are commonly deployed for eligibility checks, claim status inquiries, and administrative routing. In many implementations:
