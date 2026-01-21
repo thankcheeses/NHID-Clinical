@@ -17,9 +17,7 @@
 
 ## 🎯 What Problem Does This Solve?
 
-Picture this: You're a medical office assistant calling an insurance company to check a claim status. A friendly voice answers: *"Hi, this is Sarah!"* 
-
-You spend 3 minutes explaining the situation. "Sarah" keeps saying *"Mmm-hmm, let me check that..."* with realistic typing sounds in the background.
+Picture this: You're a medical office assistant calling an insurance company to check a claim status. A friendly voice answers: *"Hi, this is Sarah!"* You spend 3 minutes explaining the situation. "Sarah" keeps saying *"Mmm-hmm, let me check that..."* with realistic typing sounds in the background.
 
 Then suddenly: *"I'm sorry, I didn't understand. Can you repeat the member ID?"*
 
@@ -56,23 +54,7 @@ The standard addresses a documented gap between existing consumer-protection law
 
 ## 💡 How NHID-Clinical Works
 
-```mermaid
-sequenceDiagram
-    participant Provider as Provider Office
-    participant AI as AI Agent
-    participant Payer as Payer System
-    
-    Provider->>Payer: Initiates Call (Claim Status)
-    Payer->>AI: Route to AI Agent
-    AI->>Provider: Hello, I am an automated assistant...
-    Note over AI,Provider: Identity Disclosed BEFORE data request
-    Provider->>AI: Provides NPI and Claim Number
-    AI->>Payer: Verify No Deceptive Artifacts Used
-    Note over AI,Payer: Compliant (No fake breathing/typing)
-    Payer->>AI: Claim Status Retrieved
-    AI->>Provider: Provides Status + Reference Number
-    Note over AI,Provider: Human escalation available if needed
-```
+![NHID Workflow Diagram](flowchart.png)
 
 **The "Green Lane" Principle:** When AI agents identify themselves upfront and follow the rules, everyone wins:
 - **Providers** save time (no "are you human?" loops)
@@ -159,12 +141,12 @@ Agents must not employ synthetic audio artifacts that serve no communicative fun
 
 **❌ Prohibited "Masking" Techniques:**
 
-| Deceptive Artifact | Why It's Banned | Compliant Alternative |
-|--------------------|-----------------|----------------------|
-| Synthetic breathing sounds | Implies human biology | Natural prosody/pacing |
-| Fake keyboard typing | Implies human is working | Say: "Searching the system..." |
-| Scripted umm sounds | Masks processing latency | Say: "One moment while I retrieve that..." |
-| Human name without qualification | Creates false assumption | Say: "This is Alex, an automated assistant..." |
+| Prohibited Artifact | Why It Is Banned | Compliant Alternative |
+| :--- | :--- | :--- |
+| **Synthetic Breathing** | Implies biological life functions | Natural prosody and pacing |
+| **Fake Typing Sounds** | Deceptively implies human physical work | "Searching the system..." |
+| **Scripted "Umm / Ahh"** | Masks processing latency deceptively | "One moment while I retrieve that..." |
+| **Unqualified Human Name** | Creates false assumption of humanity | "This is Alex, an automated assistant..." |
 
 **✅ What's ALLOWED (and encouraged):**
 - Natural prosody and conversational tone
@@ -212,12 +194,12 @@ When a human stakeholder explicitly requests a transfer or indicates the agent i
 
 How do you know if NHID-Clinical is working?
 
-| Metric | What It Measures | Target |
-|--------|-----------------|--------|
-| **Disclosure Failure Rate (DFR)** | % of calls where data was requested *before* identity disclosure | <2% |
-| **Escalation Loop Count** | Frequency of "agent... agent... AGENT!" frustration | <1 per 100 calls |
-| **Average Handle Time (AHT)** | Reduction in call duration due to eliminating "are you a bot?" verification | -15-30 seconds |
-| **Provider Satisfaction** | Post-call feedback from office staff | >85% positive |
+| Metric | Definition | Success Target |
+| :--- | :--- | :--- |
+| **Disclosure Failure Rate (DFR)** | Calls where data was requested *before* identity disclosure | **< 2%** |
+| **Escalation Loop Frequency** | Callers repeating "Agent" or "Representative" >2 times | **< 1 per 100 calls** |
+| **Average Handle Time (AHT)** | Reduction in duration by eliminating verification loops | **-15 to -30 seconds** |
+| **Provider Satisfaction** | Post-interaction feedback rating | **> 85% Positive** |
 
 ---
 
@@ -226,11 +208,11 @@ How do you know if NHID-Clinical is working?
 For the compliance nerds (said with love—I am one):
 
 | AI RMF Function | Category | NHID-Clinical Alignment |
-|----------------|----------|------------------------|
-| **GOVERN** | GOV 1.5 – Risk Management | Defines "impersonation latency" as a specific operational risk |
-| **MAP** | MAP 3.4 – Human-AI Interaction | Establishes boundaries where synthetic voice cannot deceive humans |
-| **MEASURE** | MEAS 2.6 – Transparency | Introduces quantifiable metrics (DFR) to evaluate disclosure |
-| **MANAGE** | MAN 4.1 – Post-Deployment Monitoring | Requires audit artifacts and logs for ongoing oversight |
+| :--- | :--- | :--- |
+| **GOVERN** | `GOV 1.5` Risk Management | Defines "Impersonation Latency" as a specific operational risk. |
+| **MAP** | `MAP 3.4` Human-AI Interaction | Establishes the boundary where synthetic voice must not deceive. |
+| **MEASURE** | `MEAS 2.6` Transparency | Introduces quantifiable metrics (DFR) to evaluate disclosure. |
+| **MANAGE** | `MAN 4.1` Post-Deployment | Requires operational audit logs for ongoing oversight. |
 
 ---
 
