@@ -61,17 +61,15 @@ sequenceDiagram
     participant Provider as Provider Office
     participant AI as AI Agent
     participant Payer as Payer System
-    participant NHID as NHID Verification
     
     Provider->>Payer: Initiates Call (Claim Status)
     Payer->>AI: Route to AI Agent
-    AI->>Provider: "Hello, I am an automated assistant..."
-    Note over AI,Provider: ✅ Identity Disclosed BEFORE data request
+    AI->>Provider: Hello, I am an automated assistant...
+    Note over AI,Provider: Identity Disclosed BEFORE data request
     Provider->>AI: Provides NPI and Claim Number
-    AI->>NHID: Verify No Deceptive Artifacts
-    NHID-->>AI: ✅ Compliant (No fake breathing/typing)
-    AI->>Payer: Process Request
-    Payer-->>AI: Claim Status Retrieved
+    AI->>Payer: Verify No Deceptive Artifacts Used
+    Note over AI,Payer: Compliant (No fake breathing/typing)
+    Payer->>AI: Claim Status Retrieved
     AI->>Provider: Provides Status + Reference Number
     Note over AI,Provider: Human escalation available if needed
 ```
@@ -160,12 +158,13 @@ Agents must not employ synthetic audio artifacts that serve no communicative fun
 **Translation:** Stop making your bots pretend to breathe.
 
 **❌ Prohibited "Masking" Techniques:**
+
 | Deceptive Artifact | Why It's Banned | Compliant Alternative |
-|-------------------|-----------------|----------------------|
+|--------------------|-----------------|----------------------|
 | Synthetic breathing sounds | Implies human biology | Natural prosody/pacing |
-| Fake keyboard typing | Implies human is "working" | "Searching the system..." |
-| Scripted "umm..." sounds | Masks processing latency | "One moment while I retrieve that..." |
-| Human name without qualification | Creates false assumption | "This is Alex, an automated assistant..." |
+| Fake keyboard typing | Implies human is working | Say: "Searching the system..." |
+| Scripted umm sounds | Masks processing latency | Say: "One moment while I retrieve that..." |
+| Human name without qualification | Creates false assumption | Say: "This is Alex, an automated assistant..." |
 
 **✅ What's ALLOWED (and encouraged):**
 - Natural prosody and conversational tone
