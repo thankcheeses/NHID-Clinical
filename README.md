@@ -203,16 +203,18 @@ How do you know if NHID-Clinical is working?
 
 ---
 
-## 🎯 NIST AI RMF Alignment
+## 🔗 Framework Alignment (ISO 42001 & NIST AI RMF)
 
-For the compliance nerds (said with love—I am one):
+NHID-Clinical is designed to operationalize high-level governance requirements into testable logic gates.
 
-| AI RMF Function | Category | NHID-Clinical Alignment |
-| :--- | :--- | :--- |
-| **GOVERN** | `GOV 1.5` Risk Management | Defines "Impersonation Latency" as a specific operational risk. |
-| **MAP** | `MAP 3.4` Human-AI Interaction | Establishes the boundary where synthetic voice must not deceive. |
-| **MEASURE** | `MEAS 2.6` Transparency | Introduces quantifiable metrics (DFR) to evaluate disclosure. |
-| **MANAGE** | `MAN 4.1` Post-Deployment | Requires operational audit logs for ongoing oversight. |
+| NHID-Clinical Control | NIST AI RMF 1.0 (US) | ISO/IEC 42001:2023 (Global) | Operational Function |
+| :--- | :--- | :--- | :--- |
+| **Proactive Identity Assertion (PIA)** | **MEAS 2.6** (Transparency)<br>**MAP 3.4** (Context) | **A.7.2** (System Transparency)<br>**B.9.1** (Communication) | Ensures stakeholders know they are interacting with an AI system *before* risk exposure. |
+| **The "Turing Boundary"** (No Deception) | **GOV 1.5** (Risk Mgmt)<br>**MAP 3.4** (Human-AI Interaction) | **A.5.8** (Safety & Trust)<br>**A.9.2** (AI System Impact) | Prevents manipulative design patterns (e.g., fake breathing) that erode trust. |
+| **Pre-Data Exchange Gate** | **MAN 1.2** (Risk Treatment)<br>**GOV 5.1** (Legal Compliance) | **A.6.2** (Data Management)<br>**A.8.2** (Data Privacy) | Enforces "Minimum Necessary" data access by verifying identity *before* PHI intake. |
+| **Safe Failover / Escalation** | **MAN 4.2** (Human Oversight)<br>**GOV 5.2** (Feedback Loops) | **A.8.3** (Human Oversight)<br>**A.6.3** (Incident Management) | Guarantees a "Human-in-the-Loop" fallback when AI fails or trust is broken. |
+| **Audit Logging** | **MAN 4.1** (Monitoring)<br>**MEAS 2.2** (Validation) | **A.4.2** (Documentation)<br>**A.9.3** (Performance Eval) | Provides the evidentiary chain required for compliance audits. |
+
 
 ---
 
