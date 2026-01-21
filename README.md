@@ -54,7 +54,7 @@ The standard addresses a documented gap between existing consumer-protection law
 
 ## 💡 How NHID-Clinical Works
 
-![NHID Workflow Diagram](flowchart.png)
+![NHID Workflow Diagram](https://i.imgur.com/bXbrXLT.png)
 
 **The "Green Lane" Principle:** When AI agents identify themselves upfront and follow the rules, everyone wins:
 - **Providers** save time (no "are you human?" loops)
