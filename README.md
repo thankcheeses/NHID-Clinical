@@ -282,6 +282,9 @@ This work is licensed under **Creative Commons Attribution 4.0 International (CC
 **Repository:** [github.com/thankcheeses/NHID-Clinical](https://github.com/thankcheeses/NHID-Clinical)  
 **Portfolio:** [ai-governance-map.vercel.app](https://ai-governance-map.vercel.app)
 
+[![Connect on LinkedIn](LinkedIn_Card.jpg)](https://www.linkedin.com/in/brianna-baynard)
+
+
 ---
 
 ## 📚 Changelog
