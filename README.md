@@ -313,6 +313,5 @@ Special thanks to the healthcare IT community for feedback during early drafts, 
 **Built with ❤️ by someone who spent too many hours asking "Wait, am I talking to a robot?"**
 
 *Let's make healthcare AI transparent, trustworthy, and a little less frustrating.*
-<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="brianna-baynard" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/brianna-baynard?trk=profile-badge">Brianna B.</a></div>
               
